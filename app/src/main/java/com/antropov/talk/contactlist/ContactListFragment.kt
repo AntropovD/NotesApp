@@ -6,29 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.antropov.talk.R
+import com.antropov.talk.databinding.ContactListFragmentBinding
 
 class ContactListFragment : Fragment() {
 
-  companion object {
-    fun newInstance() = ContactListFragment()
+  private val viewModel: ContactListViewModel by lazy {
+    ViewModelProviders.of(this).get(ContactListViewModel::class.java)
   }
-
-  private lateinit var viewModel: ContactListViewModel
 
   override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
+    inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    return inflater.inflate(R.layout.contact_list_fragment, container, false)
+    val binding = ContactListFragmentBinding.inflate(inflater)
+    binding.lifecycleOwner = this
+    binding.viewModel = viewModel
+    return binding.root
   }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this)
-        .get(ContactListViewModel::class.java)
-    // TODO: Use the ViewModel
-  }
-
 }
