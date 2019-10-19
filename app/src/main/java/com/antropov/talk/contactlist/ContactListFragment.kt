@@ -21,6 +21,7 @@ class ContactListFragment : Fragment() {
     val binding = ContactListFragmentBinding.inflate(inflater)
     binding.lifecycleOwner = this
     binding.viewModel = viewModel
+    binding.contacts.adapter = ItemsAdapter()
     return binding.root
   }
 }
