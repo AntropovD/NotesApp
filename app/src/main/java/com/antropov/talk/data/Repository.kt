@@ -4,7 +4,11 @@ class Repository {
 
   var index = 0
 
-  val items: MutableList<Item> = ArrayList()
+  val items: MutableList<Item>
+
+  init {
+    items = arrayListOf()
+  }
 
   fun increment() {
     index += 1

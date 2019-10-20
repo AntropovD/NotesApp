@@ -19,7 +19,7 @@ class ContactListViewModel : ViewModel() {
     get() = _items
 
   init {
-    _items.value = repository.items
+    _items.value = listOf()
   }
 
   fun increment() {
