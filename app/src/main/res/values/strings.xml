@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Talk</string>
     <string name="counter">Counter: </string>
-    <string name="clear">Clear</string>
     <string name="inc">Inc</string>
+    <string name="clear">Clear</string>
 </resources>
