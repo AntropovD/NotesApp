@@ -9,4 +9,5 @@ import com.antropov.talk.data.Item
 fun bindRecyclerView(recyclerView: RecyclerView, data:List<Item>){
   val adapter = recyclerView.adapter as ItemsAdapter
   adapter.submitList(data)
+  recyclerView.scrollToPosition(data.size - 1)
 }
