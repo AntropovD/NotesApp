@@ -22,6 +22,15 @@ class ContactListFragment : Fragment() {
     binding.lifecycleOwner = this
     binding.viewModel = viewModel
     binding.contacts.adapter = ItemsAdapter()
+    binding.callback = object : Callback {
+      override fun increment() {
+        viewModel.increment()
+      }
+    }
     return binding.root
+  }
+
+  interface Callback {
+    fun increment()
   }
 }
