@@ -7,8 +7,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.antropov.talk.R
 import com.antropov.talk.databinding.ContactListFragmentBinding
 
@@ -32,7 +34,18 @@ class ContactListFragment : Fragment() {
       }
     }
     setHasOptionsMenu(true)
+    addRecyclerViewDivider(binding)
+
     return binding.root
+  }
+
+  private fun addRecyclerViewDivider(binding: ContactListFragmentBinding) {
+    val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+    val dividerDrawable = ResourcesCompat.getDrawable(resources, R.drawable.divider, null)
+    if (dividerDrawable != null) {
+      decoration.setDrawable(dividerDrawable)
+    }
+    binding.contacts.addItemDecoration(decoration)
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -3,4 +3,7 @@
     <string name="counter">Counter: </string>
     <string name="inc">Inc</string>
     <string name="clear">Clear</string>
+
+
+    <string name="content_description_note_icon">Note icon</string>
 </resources>

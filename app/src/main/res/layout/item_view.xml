@@ -20,8 +20,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:srcCompat="@android:drawable/btn_star_big_on" />
+        android:background="@color/primaryDarkColor"
+        app:srcCompat="@android:drawable/sym_action_email"
+        tools:srcCompat="@android:drawable/sym_action_email"
+        android:contentDescription="@string/content_description_note_icon" />
 
     <TextView
         android:id="@+id/title"
