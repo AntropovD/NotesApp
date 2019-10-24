@@ -27,7 +27,7 @@ class ContactListViewModel : ViewModel() {
     updateLiveData()
   }
 
-  fun clear() {
+  fun clearView() {
     repository.clear()
     updateLiveData()
   }

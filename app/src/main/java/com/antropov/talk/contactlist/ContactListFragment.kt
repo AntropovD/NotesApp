@@ -56,7 +56,7 @@ class ContactListFragment : Fragment() {
   override fun onOptionsItemSelected(item: MenuItem) =
     when (item.itemId) {
       R.id.clear_menu -> {
-        viewModel.clear()
+        viewModel.clearView()
         true
       }
       else -> {
