@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.antropov.talk.data.Item
 import com.antropov.talk.databinding.ItemViewBinding
 
-class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ItemViewHolder>(DiffCallback) {
+class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ViewHolder>(DiffCallback) {
 
-  class ItemViewHolder(private val binding: ItemViewBinding) :
+  class ViewHolder(private val binding: ItemViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Item) {
       binding.item = item
@@ -28,8 +28,8 @@ class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ItemViewHolder>(DiffCallback
     }
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsAdapter.ItemViewHolder {
-    return ItemViewHolder(
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsAdapter.ViewHolder {
+    return ViewHolder(
       ItemViewBinding.inflate(
         LayoutInflater.from(
           parent.context
@@ -38,7 +38,7 @@ class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ItemViewHolder>(DiffCallback
     )
   }
 
-  override fun onBindViewHolder(holder: ItemsAdapter.ItemViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: ItemsAdapter.ViewHolder, position: Int) {
     val item = getItem(position)
     holder.bind(item)
   }

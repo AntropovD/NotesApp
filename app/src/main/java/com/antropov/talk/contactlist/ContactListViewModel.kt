@@ -10,10 +10,6 @@ class ContactListViewModel : ViewModel() {
 
   private val repository = Repository()
 
-  private val _counter = MutableLiveData<Int>()
-  val counter: MutableLiveData<Int>
-    get() = _counter
-
   private val _items = MutableLiveData<List<Item>>()
   val items: LiveData<List<Item>>
     get() = _items
@@ -34,6 +30,5 @@ class ContactListViewModel : ViewModel() {
 
   private fun updateLiveData() {
     _items.value = repository.items
-    _counter.value = repository.index
   }
 }

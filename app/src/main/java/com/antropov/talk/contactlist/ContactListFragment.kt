@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.antropov.talk.R
 import com.antropov.talk.databinding.ContactListFragmentBinding
@@ -28,15 +29,25 @@ class ContactListFragment : Fragment() {
     binding.lifecycleOwner = this
     binding.viewModel = viewModel
     binding.contacts.adapter = ItemsAdapter()
-    binding.callback = object : Callback {
-      override fun increment() {
-        viewModel.increment()
-      }
+    binding.floatingActionButton.setOnClickListener {
+      viewModel.increment()
     }
     setHasOptionsMenu(true)
     addRecyclerViewDivider(binding)
+    setupFab(binding)
 
     return binding.root
+  }
+
+  private fun setupFab(binding: ContactListFragmentBinding) {
+    binding.floatingActionButton.setOnClickListener {
+      navigateToNewNote()
+    }
+  }
+
+  private fun navigateToNewNote() {
+    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
+    NavHostFragment.findNavController(this).navigate(action)
   }
 
   private fun addRecyclerViewDivider(binding: ContactListFragmentBinding) {
@@ -63,8 +74,4 @@ class ContactListFragment : Fragment() {
         super.onOptionsItemSelected(item)
       }
     }
-
-  interface Callback {
-    fun increment()
-  }
 }
