@@ -48,6 +48,7 @@ class ContactListFragment : Fragment() {
   private fun navigateToNewNote() {
     val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this).navigate(action)
+    viewModel.increment()
   }
 
   private fun addRecyclerViewDivider(binding: ContactListFragmentBinding) {
@@ -61,7 +62,6 @@ class ContactListFragment : Fragment() {
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
     inflater.inflate(R.menu.menu, menu)
-    super.onCreateOptionsMenu(menu, inflater)
   }
 
   override fun onOptionsItemSelected(item: MenuItem) =

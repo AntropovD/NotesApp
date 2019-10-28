@@ -1,12 +1,15 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/primaryColor</item>
-    <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-    <item name="colorAccent">@color/secondaryColor</item>
+    <item name="colorPrimary">@color/indigo_500</item>
+    <item name="colorPrimaryDark">@color/indigo_700</item>
+    <item name="colorAccent">@color/pink_a200</item>
+  </style>
 
+  <style name="MyToolbar">
+    <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
   </style>
 
 </resources>
