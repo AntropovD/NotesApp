@@ -8,8 +8,11 @@
     <item name="colorAccent">@color/pink_a200</item>
   </style>
 
-  <style name="MyToolbar">
-    <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+  <style name="Talk.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="Talk.Toolbar.Title">
+    <item name="android:fontFamily">@font/macondo_swash_caps</item>
+    <item name="android:textSize">30sp</item>
   </style>
 
 </resources>
