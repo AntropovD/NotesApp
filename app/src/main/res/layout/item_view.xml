@@ -21,9 +21,9 @@
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:background="@color/primaryDarkColor"
+        android:contentDescription="@string/content_description_note_icon"
         app:srcCompat="@android:drawable/sym_action_email"
-        tools:srcCompat="@android:drawable/sym_action_email"
-        android:contentDescription="@string/content_description_note_icon" />
+        tools:srcCompat="@android:drawable/sym_action_email" />
 
     <TextView
         android:id="@+id/title"
