@@ -25,5 +25,9 @@
       android:id="@+id/noteFragment"
       android:name="com.antropov.talk.note.NoteFragment"
       android:label="Note"
-      tools:layout="@layout/note_fragment" />
+      tools:layout="@layout/note_fragment" >
+    <action
+        android:id="@+id/action_noteFragment_to_contactListFragment"
+        app:destination="@id/contactListFragment" />
+  </fragment>
 </navigation>

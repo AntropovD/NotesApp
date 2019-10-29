@@ -6,27 +6,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.antropov.talk.R
+import androidx.navigation.fragment.NavHostFragment
+import com.antropov.talk.databinding.NoteFragmentBinding
 
 class NoteFragment : Fragment() {
 
-  companion object {
-    fun newInstance() = NoteFragment()
+  private val viewModel: NoteViewModel by lazy {
+    ViewModelProviders.of(this).get(NoteViewModel::class.java)
   }
 
-  private lateinit var viewModel: NoteViewModel
+  private lateinit var binding: NoteFragmentBinding
+
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    return inflater.inflate(R.layout.note_fragment, container, false)
+    binding = NoteFragmentBinding.inflate(inflater)
+    binding.viewModel = viewModel
+    return binding.root
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(NoteViewModel::class.java)
-    // TODO: Use the ViewModel
+    binding.lifecycleOwner = this
+    setupFab(binding)
   }
 
+  private fun setupFab(binding: NoteFragmentBinding) {
+    binding.noteFragmentFab.setOnClickListener {
+      navigateBack()
+    }
+  }
+
+  private fun navigateBack() {
+    val action = NoteFragmentDirections.actionNoteFragmentToContactListFragment("1")
+    NavHostFragment.findNavController(this).navigate(action)
+  }
 }

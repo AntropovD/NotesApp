@@ -29,9 +29,6 @@ class ContactListFragment : Fragment() {
     binding.lifecycleOwner = this
     binding.viewModel = viewModel
     binding.contacts.adapter = ItemsAdapter()
-    binding.floatingActionButton.setOnClickListener {
-      viewModel.increment()
-    }
     setHasOptionsMenu(true)
     addRecyclerViewDivider(binding)
     setupFab(binding)

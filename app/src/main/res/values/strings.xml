@@ -1,10 +1,8 @@
 <resources>
   <string name="app_name">Talk</string>
-  <string name="counter">Counter: </string>
-  <string name="inc">Inc</string>
-  <string name="clear">Clear</string>
-
-
   <string name="content_description_note_icon">Note icon</string>
   <string name="submit">Submit</string>
+  <string name="hint_title">Title</string>
+  <string name="hint_note_text">Note text</string>
+  <string name="clear">Clear</string>
 </resources>
