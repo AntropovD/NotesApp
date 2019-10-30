@@ -15,16 +15,11 @@ class ContactListViewModel : ViewModel() {
     get() = _items
 
   init {
-    _items.value = listOf()
-    updateLiveData()
+    _items.value = repository.items
   }
 
   fun clearView() {
     repository.clear()
-    updateLiveData()
-  }
-
-  private fun updateLiveData() {
-    _items.value = repository.items
+    _items.value = listOf()
   }
 }
