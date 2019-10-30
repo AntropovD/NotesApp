@@ -8,7 +8,7 @@ import com.antropov.talk.data.Repository
 
 class ContactListViewModel : ViewModel() {
 
-  private val repository = Repository()
+  private val repository = Repository.getInstance()
 
   private val _items = MutableLiveData<List<Item>>()
   val items: LiveData<List<Item>>
@@ -16,10 +16,6 @@ class ContactListViewModel : ViewModel() {
 
   init {
     _items.value = listOf()
-  }
-
-  fun increment() {
-    repository.increment()
     updateLiveData()
   }
 

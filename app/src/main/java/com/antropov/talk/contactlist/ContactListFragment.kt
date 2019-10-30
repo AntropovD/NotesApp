@@ -21,19 +21,24 @@ class ContactListFragment : Fragment() {
     ViewModelProviders.of(this).get(ContactListViewModel::class.java)
   }
 
+  private lateinit var binding: ContactListFragmentBinding
+
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    val binding = ContactListFragmentBinding.inflate(inflater)
-    binding.lifecycleOwner = this
+    binding = ContactListFragmentBinding.inflate(inflater)
     binding.viewModel = viewModel
+    return binding.root
+  }
+
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    binding.lifecycleOwner = this
     binding.contacts.adapter = ItemsAdapter()
     setHasOptionsMenu(true)
     addRecyclerViewDivider(binding)
     setupFab(binding)
-
-    return binding.root
   }
 
   private fun setupFab(binding: ContactListFragmentBinding) {
@@ -45,7 +50,6 @@ class ContactListFragment : Fragment() {
   private fun navigateToNewNote() {
     val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this).navigate(action)
-    viewModel.increment()
   }
 
   private fun addRecyclerViewDivider(binding: ContactListFragmentBinding) {

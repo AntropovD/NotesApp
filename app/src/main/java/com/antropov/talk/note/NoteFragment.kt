@@ -14,7 +14,6 @@ class NoteFragment : Fragment() {
   private val viewModel: NoteViewModel by lazy {
     ViewModelProviders.of(this).get(NoteViewModel::class.java)
   }
-
   private lateinit var binding: NoteFragmentBinding
 
 
@@ -35,6 +34,7 @@ class NoteFragment : Fragment() {
 
   private fun setupFab(binding: NoteFragmentBinding) {
     binding.noteFragmentFab.setOnClickListener {
+      viewModel.increment()
       navigateBack()
     }
   }

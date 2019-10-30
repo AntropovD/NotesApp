@@ -15,4 +15,17 @@ class Repository {
     index = 0
     items.clear()
   }
+
+  companion object {
+
+    @Volatile
+    private var INSTANCE: Repository? = null
+
+    fun getInstance(): Repository {
+      if (INSTANCE == null) {
+        INSTANCE = Repository()
+      }
+      return INSTANCE as Repository
+    }
+  }
 }
