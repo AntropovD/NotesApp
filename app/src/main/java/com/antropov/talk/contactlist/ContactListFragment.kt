@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.antropov.talk.R
 import com.antropov.talk.databinding.ContactListFragmentBinding
 
@@ -35,14 +36,16 @@ class ContactListFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     binding.lifecycleOwner = this
-    binding.contacts.adapter = ItemsAdapter()
+    binding.recyclerViewContactListFragment.layoutManager =
+      LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    binding.recyclerViewContactListFragment.adapter = ItemsAdapter()
     setHasOptionsMenu(true)
-    addRecyclerViewDivider(binding)
+//    addRecyclerViewDivider(binding)
     setupFab(binding)
   }
 
   private fun setupFab(binding: ContactListFragmentBinding) {
-    binding.floatingActionButton.setOnClickListener {
+    binding.fabContactListFragment.setOnClickListener {
       navigateToNewNote()
     }
   }
@@ -58,7 +61,7 @@ class ContactListFragment : Fragment() {
     if (dividerDrawable != null) {
       decoration.setDrawable(dividerDrawable)
     }
-    binding.contacts.addItemDecoration(decoration)
+    binding.recyclerViewContactListFragment.addItemDecoration(decoration)
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

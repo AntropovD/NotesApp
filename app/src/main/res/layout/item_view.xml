@@ -4,36 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
     <variable
         name="item"
         type="com.antropov.talk.data.Item" />
   </data>
 
-  <LinearLayout
+  <androidx.cardview.widget.CardView
       android:layout_width="match_parent"
-      android:layout_height="?android:attr/listPreferredItemHeight"
-      android:orientation="horizontal"
-      android:padding="@dimen/item_padding">
+      android:layout_height="wrap_content"
+      app:cardCornerRadius="1dp"
+      app:cardElevation="4dp"
+      android:layout_marginTop="2dp">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical"
-        android:background="?colorPrimaryDark"
-        android:contentDescription="@string/content_description_note_icon"
-        app:srcCompat="@android:drawable/sym_action_email"
-        tools:srcCompat="@android:drawable/sym_action_email" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
-        android:text="@{item.description}"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+      <TextView
+          android:id="@+id/text_item_view_title"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
+          android:ellipsize="end"
+          android:singleLine="true"
+          android:text="@{item.title}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Title"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/text_item_view_datetime"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Title #1" />
 
-  </LinearLayout>
+      <TextView
+          android:id="@+id/text_item_view_datetime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          android:layout_marginEnd="16dp"
+          android:text="@{item.datetime}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Small"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.5"
+          app:layout_constraintStart_toEndOf="@+id/text_item_view_title"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="30.10.2019 13:30" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.cardview.widget.CardView>
 </layout>
 

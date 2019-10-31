@@ -28,18 +28,14 @@ class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ViewHolder>(DiffCallback) {
     }
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsAdapter.ViewHolder {
-    return ViewHolder(
-      ItemViewBinding.inflate(
-        LayoutInflater.from(
-          parent.context
-        )
-      )
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    val binding = ItemViewBinding.inflate(
+      LayoutInflater.from(parent.context), parent, false
     )
+    return ViewHolder(binding)
   }
 
-  override fun onBindViewHolder(holder: ItemsAdapter.ViewHolder, position: Int) {
-    val item = getItem(position)
-    holder.bind(item)
+  override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    holder.bind(getItem(position))
   }
 }

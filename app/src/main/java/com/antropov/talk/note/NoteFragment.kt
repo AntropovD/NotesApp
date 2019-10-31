@@ -33,8 +33,11 @@ class NoteFragment : Fragment() {
   }
 
   private fun setupFab(binding: NoteFragmentBinding) {
-    binding.noteFragmentFab.setOnClickListener {
-      viewModel.increment()
+    binding.fabNoteFragment.setOnClickListener {
+      viewModel.increment(
+        binding.editTextNoteFragmentTitle.text,
+        binding.editTextNoteFragmentDescription.text
+      )
       navigateBack()
     }
   }
