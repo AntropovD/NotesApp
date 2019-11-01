@@ -1,20 +1,34 @@
 package com.antropov.talk.note
 
-import android.text.Editable
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.antropov.talk.data.Repository
+import com.antropov.talk.util.Event
+import java.text.DateFormat
 import java.util.Calendar
 
 class NoteViewModel : ViewModel() {
 
   private val repository = Repository.getInstance()
 
-  fun increment(title: Editable, description: Editable) {
-    repository.increment(title.toString(), description.toString())
-  }
+  private val _snackbarErrorEvent = MutableLiveData<Event<Unit>>()
+  val snackbarErrorEvent: LiveData<Event<Unit>> = _snackbarErrorEvent
+
+  private val _noteAddedEvent = MutableLiveData<Event<Unit>>()
+  val noteAddedEvent: LiveData<Event<Unit>> = _noteAddedEvent
+
+  fun addNote(title: String, description: String) =
+    if (title.isEmpty() || description.isEmpty()) {
+      _snackbarErrorEvent.value = Event(Unit)
+    } else {
+      repository.increment(title, description, dateTime)
+      _noteAddedEvent.value = Event(Unit)
+    }
 
   val dateTime: String
-    get() {
-      return Calendar.getInstance().time.toString()
-    }
+    get() = DateFormat.getDateTimeInstance(
+      DateFormat.SHORT,
+      DateFormat.SHORT
+    ).format(Calendar.getInstance().time)
 }

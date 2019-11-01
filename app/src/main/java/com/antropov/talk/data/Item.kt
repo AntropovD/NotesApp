@@ -5,11 +5,4 @@ data class Item(
   val title: String,
   val description: String,
   val datetime: String
-) {
-  constructor(id: Int) : this(
-    id,
-    "Title #$id",
-    "My description #$id",
-    "datetime #$id"
-  )
-}
+)

@@ -6,9 +6,9 @@ class Repository {
 
   val items: MutableList<Item> = ArrayList()
 
-  fun increment(toString: String, toString1: String) {
+  fun increment(title: String, description: String, dateTime: String) {
     index += 1
-    items.add(Item(index))
+    items.add(Item(index, title, description, dateTime))
   }
 
   fun clear() {

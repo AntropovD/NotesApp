@@ -51,8 +51,6 @@
           android:text="@{viewModel.dateTime}"
           tools:text="datetime" />
 
-      <include layout="@layout/item_view" />
-
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
