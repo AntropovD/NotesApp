@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import com.antropov.talk.R
 import com.antropov.talk.databinding.NoteFragmentBinding
 import com.google.android.material.snackbar.Snackbar
@@ -19,20 +20,24 @@ class NoteFragment : Fragment() {
   }
   private lateinit var binding: NoteFragmentBinding
 
+    private val args: NoteFragmentArgs by navArgs()
+
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    binding = NoteFragmentBinding.inflate(inflater)
-    binding.viewModel = viewModel
+      val root = inflater.inflate(R.layout.note_fragment, container, false)
+      binding = NoteFragmentBinding.bind(root)
+      binding.viewModel = viewModel
+      binding.lifecycleOwner = this.viewLifecycleOwner
     return binding.root
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    binding.lifecycleOwner = this
     setupFab(binding)
     setupSnackbar()
+      viewModel.start(args.noteId)
   }
 
   private fun setupSnackbar() {
@@ -54,7 +59,7 @@ class NoteFragment : Fragment() {
   }
 
   private fun navigateBack() {
-    val action = NoteFragmentDirections.actionNoteFragmentToContactListFragment("1")
+      val action = NoteFragmentDirections.actionNoteFragmentToContactListFragment()
     NavHostFragment.findNavController(this).navigate(action)
   }
 }

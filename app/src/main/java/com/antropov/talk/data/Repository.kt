@@ -6,6 +6,12 @@ class Repository {
 
   val items: MutableList<Item> = ArrayList()
 
+  fun getNote(id: Int): Item? {
+    return items.find {
+      it.id == id
+    }
+  }
+
   fun increment(title: String, description: String, dateTime: String) {
     index += 1
     items.add(Item(index, title, description, dateTime))

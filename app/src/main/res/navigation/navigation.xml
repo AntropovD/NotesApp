@@ -8,19 +8,15 @@
   <fragment
       android:id="@+id/contactListFragment"
       android:name="com.antropov.talk.contactlist.ContactListFragment"
-      android:label="NotesApp"
-      tools:layout="@layout/contact_list_fragment">
+      android:label="NotesApp">
     <action
         android:id="@+id/action_contactListFragment_to_noteFragment"
-        app:destination="@+id/noteFragment"
+        app:destination="@id/noteFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right"
         app:popUpToInclusive="true" />
-    <argument
-        android:name="taskId"
-        app:argType="string" />
   </fragment>
   <fragment
       android:id="@+id/noteFragment"
@@ -36,5 +32,9 @@
         app:popExitAnim="@anim/slide_out_left"
         app:popUpTo="@+id/contactListFragment"
         app:popUpToInclusive="true" />
+    <argument
+        android:name="noteId"
+        android:defaultValue="-1"
+        app:argType="integer" />
   </fragment>
 </navigation>

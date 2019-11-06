@@ -1,20 +1,19 @@
 package com.antropov.talk.contactlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.antropov.talk.R
 import com.antropov.talk.databinding.ContactListFragmentBinding
+import com.antropov.talk.util.EventObserver
 
 class ContactListFragment : Fragment() {
 
@@ -36,12 +35,10 @@ class ContactListFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     binding.lifecycleOwner = this
-    binding.recyclerViewContactListFragment.layoutManager =
-      LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     binding.recyclerViewContactListFragment.adapter = ItemsAdapter()
     setHasOptionsMenu(true)
-//    addRecyclerViewDivider(binding)
     setupFab(binding)
+    setupNavigation()
   }
 
   private fun setupFab(binding: ContactListFragmentBinding) {
@@ -50,18 +47,22 @@ class ContactListFragment : Fragment() {
     }
   }
 
+  private fun setupNavigation() {
+    viewModel.openNoteEvent.observe(this, EventObserver {
+      navigateToEditNote(it)
+    })
+  }
+
+  private fun navigateToEditNote(noteId: Int) {
+    Log.d("123", "123")
+    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
+    NavHostFragment.findNavController(this)
+        .navigate(action)
+  }
+
   private fun navigateToNewNote() {
     val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this).navigate(action)
-  }
-
-  private fun addRecyclerViewDivider(binding: ContactListFragmentBinding) {
-    val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-    val dividerDrawable = ResourcesCompat.getDrawable(resources, R.drawable.divider, null)
-    if (dividerDrawable != null) {
-      decoration.setDrawable(dividerDrawable)
-    }
-    binding.recyclerViewContactListFragment.addItemDecoration(decoration)
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
