@@ -22,6 +22,15 @@ class Repository {
     items.clear()
   }
 
+  fun updateItem(noteId: Int, title: String, description: String, dateTime: String) {
+    val item = items.find { it.id == noteId }
+    item?.let {
+      item.title = title
+      item.description = description
+      item.datetime = dateTime
+    }
+  }
+
   companion object {
 
     @Volatile

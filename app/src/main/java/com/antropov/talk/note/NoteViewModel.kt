@@ -10,47 +10,57 @@ import java.util.*
 
 class NoteViewModel : ViewModel() {
 
-  private val repository = Repository.getInstance()
+    private val repository = Repository.getInstance()
 
-  val title = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
 
-  val description = MutableLiveData<String>()
+    val description = MutableLiveData<String>()
 
-  val dateTime = MutableLiveData<String>()
+    val dateTime = MutableLiveData<String>()
 
-  private val _snackbarErrorEvent = MutableLiveData<Event<Unit>>()
-  val snackbarErrorEvent: LiveData<Event<Unit>> = _snackbarErrorEvent
+    private val _snackbarErrorEvent = MutableLiveData<Event<Unit>>()
+    val snackbarErrorEvent: LiveData<Event<Unit>> = _snackbarErrorEvent
 
-  private val _noteAddedEvent = MutableLiveData<Event<Unit>>()
-  val noteAddedEvent: LiveData<Event<Unit>> = _noteAddedEvent
+    private val _noteAddedEvent = MutableLiveData<Event<Unit>>()
+    val noteAddedEvent: LiveData<Event<Unit>> = _noteAddedEvent
 
-  init {
-    dateTime.value = getDateTime()
-  }
+    private var isNewNote = false
+    private var noteId = -1
 
-  fun addNote(title: String, description: String) =
-    if (title.isEmpty() || description.isEmpty()) {
-      _snackbarErrorEvent.value = Event(Unit)
-    } else {
-      repository.increment(title, description, dateTime.value!!)
-      _noteAddedEvent.value = Event(Unit)
+    init {
+        dateTime.value = getDateTime()
     }
 
-  fun start(noteId: Int) {
-    if (noteId == -1) {
-      return
+    fun addNote(title: String, description: String) {
+        if (title.isEmpty() || description.isEmpty()) {
+            _snackbarErrorEvent.value = Event(Unit)
+            return
+        }
+        _noteAddedEvent.value = Event(Unit)
+        if (isNewNote) {
+            repository.increment(title, description, dateTime.value!!)
+        } else {
+            repository.updateItem(noteId, title, description, dateTime.value!!)
+        }
     }
 
-    val item = repository.getNote(noteId)
-    if (item != null) {
-      title.value = item.title
-      description.value = item.description
-      dateTime.value = item.datetime
-    }
-  }
+    fun start(noteId: Int) {
+        if (noteId == -1) {
+            isNewNote = true
+            return
+        }
 
-  private fun getDateTime(): String = DateFormat.getDateTimeInstance(
-      DateFormat.SHORT,
-      DateFormat.SHORT
+        val item = repository.getNote(noteId)
+        this.noteId = noteId
+        if (item != null) {
+            title.value = item.title
+            description.value = item.description
+            dateTime.value = item.datetime
+        }
+    }
+
+    private fun getDateTime(): String = DateFormat.getDateTimeInstance(
+        DateFormat.SHORT,
+        DateFormat.SHORT
     ).format(Calendar.getInstance().time)
 }
