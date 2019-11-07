@@ -3,14 +3,14 @@ package com.antropov.talk.note
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.antropov.talk.data.Repository
+import com.antropov.talk.data.NoteRepository
 import com.antropov.talk.util.Event
 import java.text.DateFormat
-import java.util.*
+import java.util.Calendar
 
 class NoteViewModel : ViewModel() {
 
-    private val repository = Repository.getInstance()
+    private val noteRepository = NoteRepository.getInstance()
 
     val title = MutableLiveData<String>()
 
@@ -38,9 +38,9 @@ class NoteViewModel : ViewModel() {
         }
         _noteAddedEvent.value = Event(Unit)
         if (isNewNote) {
-            repository.increment(title, description, dateTime.value!!)
+            noteRepository.increment(title, description, dateTime.value!!)
         } else {
-            repository.updateItem(noteId, title, description, dateTime.value!!)
+            noteRepository.updateItem(noteId, title, description, dateTime.value!!)
         }
     }
 
@@ -50,7 +50,7 @@ class NoteViewModel : ViewModel() {
             return
         }
 
-        val item = repository.getNote(noteId)
+        val item = noteRepository.getNote(noteId)
         this.noteId = noteId
         if (item != null) {
             title.value = item.title

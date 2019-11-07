@@ -1,29 +1,29 @@
 package com.antropov.talk.data
 
-class Repository {
+class NoteRepository {
 
   var index = 0
 
-  val items: MutableList<Item> = ArrayList()
+  val notes: MutableList<Note> = ArrayList()
 
-  fun getNote(id: Int): Item? {
-    return items.find {
+  fun getNote(id: Int): Note? {
+    return notes.find {
       it.id == id
     }
   }
 
   fun increment(title: String, description: String, dateTime: String) {
     index += 1
-    items.add(Item(index, title, description, dateTime))
+    notes.add(Note(index, title, description, dateTime))
   }
 
   fun clear() {
     index = 0
-    items.clear()
+    notes.clear()
   }
 
   fun updateItem(noteId: Int, title: String, description: String, dateTime: String) {
-    val item = items.find { it.id == noteId }
+    val item = notes.find { it.id == noteId }
     item?.let {
       item.title = title
       item.description = description
@@ -34,13 +34,13 @@ class Repository {
   companion object {
 
     @Volatile
-    private var INSTANCE: Repository? = null
+    private var INSTANCE: NoteRepository? = null
 
-    fun getInstance(): Repository {
+    fun getInstance(): NoteRepository {
       if (INSTANCE == null) {
-        INSTANCE = Repository()
+        INSTANCE = NoteRepository()
       }
-      return INSTANCE as Repository
+      return INSTANCE as NoteRepository
     }
   }
 }

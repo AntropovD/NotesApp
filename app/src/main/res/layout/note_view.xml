@@ -7,11 +7,10 @@
 
     <variable
         name="clickListener"
-        type="android.view.View.OnClickListener"
-        />
+        type="android.view.View.OnClickListener" />
     <variable
-        name="item"
-        type="com.antropov.talk.data.Item" />
+        name="note"
+        type="com.antropov.talk.data.Note" />
   </data>
 
   <androidx.cardview.widget.CardView
@@ -20,8 +19,7 @@
       app:cardCornerRadius="1dp"
       app:cardElevation="4dp"
       android:layout_marginTop="2dp"
-      android:onClick="@{clickListener}"
-      >
+      android:onClick="@{clickListener}">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +33,7 @@
           android:layout_marginEnd="16dp"
           android:ellipsize="end"
           android:singleLine="true"
-          android:text="@{item.title}"
+          android:text="@{note.title}"
           android:textAppearance="@style/TextAppearance.AppCompat.Title"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toStartOf="@+id/text_item_view_datetime"
@@ -49,7 +47,7 @@
           android:layout_height="wrap_content"
           android:layout_margin="16dp"
           android:layout_marginEnd="16dp"
-          android:text="@{item.datetime}"
+          android:text="@{note.datetime}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"

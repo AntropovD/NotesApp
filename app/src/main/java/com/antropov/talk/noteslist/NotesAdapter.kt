@@ -1,4 +1,4 @@
-package com.antropov.talk.contactlist
+package com.antropov.talk.noteslist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,17 +7,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.antropov.talk.data.Item
-import com.antropov.talk.databinding.ItemViewBinding
+import com.antropov.talk.data.Note
+import com.antropov.talk.databinding.NoteViewBinding
 
-class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ViewHolder>(DiffCallback) {
+class NotesAdapter : ListAdapter<Note, NotesAdapter.ViewHolder>(DiffCallback) {
 
-  class ViewHolder(private val binding: ItemViewBinding) :
+  class ViewHolder(private val binding: NoteViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     init {
       binding.setClickListener { view ->
-        binding.item?.id?.let { noteId ->
+        binding.note?.id?.let { noteId ->
           navigateToNote(noteId, view)
         }
       }
@@ -27,30 +27,36 @@ class ItemsAdapter : ListAdapter<Item, ItemsAdapter.ViewHolder>(DiffCallback) {
       noteId: Int,
       view: View
     ) {
-      val direction = ContactListFragmentDirections
+      val direction = NotesListFragmentDirections
           .actionContactListFragmentToNoteFragment(noteId)
       view.findNavController()
           .navigate(direction)
     }
 
-    fun bind(item: Item) {
-      binding.item = item
+    fun bind(note: Note) {
+      binding.note = note
       binding.executePendingBindings()
     }
   }
 
-  companion object DiffCallback : DiffUtil.ItemCallback<Item>() {
-    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-      return oldItem === newItem
+  companion object DiffCallback : DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(
+      oldNote: Note,
+      newNote: Note
+    ): Boolean {
+      return oldNote === newNote
     }
 
-    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-      return oldItem.id == newItem.id
+    override fun areContentsTheSame(
+      oldNote: Note,
+      newNote: Note
+    ): Boolean {
+      return oldNote.id == newNote.id
     }
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val binding = ItemViewBinding.inflate(
+    val binding = NoteViewBinding.inflate(
       LayoutInflater.from(parent.context), parent, false
     )
     return ViewHolder(binding)

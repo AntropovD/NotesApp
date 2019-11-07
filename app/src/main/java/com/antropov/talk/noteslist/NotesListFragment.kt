@@ -1,4 +1,4 @@
-package com.antropov.talk.contactlist
+package com.antropov.talk.noteslist
 
 import android.os.Bundle
 import android.util.Log
@@ -12,22 +12,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.antropov.talk.R
-import com.antropov.talk.databinding.ContactListFragmentBinding
+import com.antropov.talk.databinding.NoteListFragmentBinding
 import com.antropov.talk.util.EventObserver
 
-class ContactListFragment : Fragment() {
+class NotesListFragment : Fragment() {
 
-  private val viewModel: ContactListViewModel by lazy {
-    ViewModelProviders.of(this).get(ContactListViewModel::class.java)
+  private val viewModel: NotesListViewModel by lazy {
+    ViewModelProviders.of(this)
+            .get(NotesListViewModel::class.java)
   }
 
-  private lateinit var binding: ContactListFragmentBinding
+  private lateinit var binding: NoteListFragmentBinding
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    binding = ContactListFragmentBinding.inflate(inflater)
+    binding = NoteListFragmentBinding.inflate(inflater)
     binding.viewModel = viewModel
     return binding.root
   }
@@ -35,13 +36,13 @@ class ContactListFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     binding.lifecycleOwner = this
-    binding.recyclerViewContactListFragment.adapter = ItemsAdapter()
+    binding.recyclerViewContactListFragment.adapter = NotesAdapter()
     setHasOptionsMenu(true)
     setupFab(binding)
     setupNavigation()
   }
 
-  private fun setupFab(binding: ContactListFragmentBinding) {
+  private fun setupFab(binding: NoteListFragmentBinding) {
     binding.fabContactListFragment.setOnClickListener {
       navigateToNewNote()
     }
@@ -54,14 +55,13 @@ class ContactListFragment : Fragment() {
   }
 
   private fun navigateToEditNote(noteId: Int) {
-    Log.d("123", "123")
-    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
+    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
     NavHostFragment.findNavController(this)
         .navigate(action)
   }
 
   private fun navigateToNewNote() {
-    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
+    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this).navigate(action)
   }
 
