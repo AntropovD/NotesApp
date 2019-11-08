@@ -2,7 +2,7 @@ package com.antropov.talk.data
 
 interface NotesRepository {
 
-    fun getNotes() : List<Note>
+    fun getNotes(): List<Note>
 
     fun getNote(id: Int): Note?
 

@@ -1,8 +1,6 @@
 package com.antropov.talk.note
 
 import androidx.lifecycle.ViewModel
-import com.antropov.talk.demo.DemoFragment
-import com.antropov.talk.demo.DemoViewModel
 import com.antropov.talk.di.ViewModelBuilder
 import com.antropov.talk.di.ViewModelKey
 import dagger.Binds

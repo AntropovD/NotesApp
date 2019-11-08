@@ -9,7 +9,7 @@ import com.antropov.talk.util.Event
 import javax.inject.Inject
 
 class NotesListViewModel @Inject constructor(
-    private val repository: NotesRepository
+  private val repository: NotesRepository
 ) : ViewModel() {
 
   private val _items = MutableLiveData<List<Note>>()
@@ -21,7 +21,7 @@ class NotesListViewModel @Inject constructor(
     get() = _openNoteEvent
 
   init {
-      _items.value = repository.getNotes()
+    _items.value = repository.getNotes()
   }
 
   fun clearView() {

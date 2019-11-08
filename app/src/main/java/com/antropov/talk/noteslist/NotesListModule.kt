@@ -3,8 +3,6 @@ package com.antropov.talk.noteslist
 import androidx.lifecycle.ViewModel
 import com.antropov.talk.di.ViewModelBuilder
 import com.antropov.talk.di.ViewModelKey
-import com.antropov.talk.note.NoteFragment
-import com.antropov.talk.note.NoteViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
