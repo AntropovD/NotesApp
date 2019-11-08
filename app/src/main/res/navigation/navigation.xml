@@ -37,9 +37,4 @@
         android:defaultValue="-1"
         app:argType="integer" />
   </fragment>
-    <fragment
-        android:id="@+id/demoFragment"
-        android:name="com.antropov.talk.demo.DemoFragment"
-        android:label="demo_fragment"
-        tools:layout="@layout/demo_fragment" />
 </navigation>
