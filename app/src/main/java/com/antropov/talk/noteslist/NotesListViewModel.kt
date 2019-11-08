@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.antropov.talk.data.Note
-import com.antropov.talk.data.NoteRepository
+import com.antropov.talk.data.NotesRepository
 import com.antropov.talk.util.Event
+import javax.inject.Inject
 
-class NotesListViewModel : ViewModel() {
-
-  private val repository = NoteRepository.getInstance()
+class NotesListViewModel @Inject constructor(
+  private val repository: NotesRepository
+) : ViewModel() {
 
   private val _items = MutableLiveData<List<Note>>()
   val items: LiveData<List<Note>>
@@ -20,7 +21,7 @@ class NotesListViewModel : ViewModel() {
     get() = _openNoteEvent
 
   init {
-    _items.value = repository.notes
+    _items.value = repository.getNotes()
   }
 
   fun clearView() {

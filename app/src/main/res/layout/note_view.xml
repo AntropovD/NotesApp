@@ -3,60 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-    <variable
-        name="clickListener"
-        type="android.view.View.OnClickListener" />
-    <variable
-        name="note"
-        type="com.antropov.talk.data.Note" />
-  </data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
 
-  <androidx.cardview.widget.CardView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      app:cardCornerRadius="1dp"
-      app:cardElevation="4dp"
-      android:layout_marginTop="2dp"
-      android:onClick="@{clickListener}">
+        <variable
+            name="note"
+            type="com.antropov.talk.data.Note" />
+    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/listPreferredItemHeight">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:onClick="@{clickListener}"
+        app:cardCornerRadius="1dp"
+        app:cardElevation="4dp">
 
-      <TextView
-          android:id="@+id/text_item_view_title"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="16dp"
-          android:layout_marginEnd="16dp"
-          android:ellipsize="end"
-          android:singleLine="true"
-          android:text="@{note.title}"
-          android:textAppearance="@style/TextAppearance.AppCompat.Title"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/text_item_view_datetime"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:text="Title #1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeight">
 
-      <TextView
-          android:id="@+id/text_item_view_datetime"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_margin="16dp"
-          android:layout_marginEnd="16dp"
-          android:text="@{note.datetime}"
-          android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.5"
-          app:layout_constraintStart_toEndOf="@+id/text_item_view_title"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:text="30.10.2019 13:30" />
+            <TextView
+                android:id="@+id/text_item_view_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{note.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/text_item_view_datetime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Title #1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-  </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/text_item_view_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{note.datetime}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_item_view_title"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="30.10.2019 13:30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
 

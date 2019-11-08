@@ -3,39 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
-    <variable
-        name="viewModel"
-        type="com.antropov.talk.noteslist.NotesListViewModel" />
-  </data>
+    <data>
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+        <variable
+            name="viewModel"
+            type="com.antropov.talk.noteslist.NotesListViewModel" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_contact_list_fragment"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:listData="@{viewModel.items}"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="5"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        tools:listitem="@layout/note_view" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_contact_list_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/submit"
-        android:layout_gravity="bottom|end"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_contact_list_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:listData="@{viewModel.items}"
+            tools:itemCount="5"
+            tools:listitem="@layout/note_view" />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_contact_list_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/submit"
+            app:srcCompat="@drawable/ic_add_white_24dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
