@@ -1,18 +1,19 @@
-package com.antropov.talk.contactlist
+package com.antropov.talk.noteslist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.antropov.talk.data.Item
-import com.antropov.talk.data.Repository
+import com.antropov.talk.data.Note
+import com.antropov.talk.data.NotesRepository
 import com.antropov.talk.util.Event
+import javax.inject.Inject
 
-class ContactListViewModel : ViewModel() {
+class NotesListViewModel @Inject constructor(
+  private val repository: NotesRepository
+) : ViewModel() {
 
-  private val repository = Repository.getInstance()
-
-  private val _items = MutableLiveData<List<Item>>()
-  val items: LiveData<List<Item>>
+  private val _items = MutableLiveData<List<Note>>()
+  val items: LiveData<List<Note>>
     get() = _items
 
   private val _openNoteEvent = MutableLiveData<Event<Int>>()
@@ -20,7 +21,7 @@ class ContactListViewModel : ViewModel() {
     get() = _openNoteEvent
 
   init {
-    _items.value = repository.items
+    _items.value = repository.getNotes()
   }
 
   fun clearView() {

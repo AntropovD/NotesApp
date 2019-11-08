@@ -1,47 +1,45 @@
-package com.antropov.talk.contactlist
+package com.antropov.talk.noteslist
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import android.view.*
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.antropov.talk.R
-import com.antropov.talk.databinding.ContactListFragmentBinding
+import com.antropov.talk.databinding.NoteListFragmentBinding
 import com.antropov.talk.util.EventObserver
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class ContactListFragment : Fragment() {
+class NotesListFragment : DaggerFragment() {
 
-  private val viewModel: ContactListViewModel by lazy {
-    ViewModelProviders.of(this).get(ContactListViewModel::class.java)
-  }
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private lateinit var binding: ContactListFragmentBinding
+  private val viewModel by viewModels<NotesListViewModel> { viewModelFactory }
+
+  private lateinit var binding: NoteListFragmentBinding
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    binding = ContactListFragmentBinding.inflate(inflater)
+    binding = NoteListFragmentBinding.inflate(inflater)
     binding.viewModel = viewModel
     return binding.root
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
+
     binding.lifecycleOwner = this
-    binding.recyclerViewContactListFragment.adapter = ItemsAdapter()
+    binding.recyclerViewContactListFragment.adapter = NotesAdapter()
     setHasOptionsMenu(true)
     setupFab(binding)
     setupNavigation()
   }
 
-  private fun setupFab(binding: ContactListFragmentBinding) {
+  private fun setupFab(binding: NoteListFragmentBinding) {
     binding.fabContactListFragment.setOnClickListener {
       navigateToNewNote()
     }
@@ -54,14 +52,13 @@ class ContactListFragment : Fragment() {
   }
 
   private fun navigateToEditNote(noteId: Int) {
-    Log.d("123", "123")
-    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
+    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
     NavHostFragment.findNavController(this)
         .navigate(action)
   }
 
   private fun navigateToNewNote() {
-    val action = ContactListFragmentDirections.actionContactListFragmentToNoteFragment()
+    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this).navigate(action)
   }
 

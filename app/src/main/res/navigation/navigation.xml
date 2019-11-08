@@ -7,7 +7,7 @@
 
   <fragment
       android:id="@+id/contactListFragment"
-      android:name="com.antropov.talk.contactlist.ContactListFragment"
+      android:name="com.antropov.talk.noteslist.NotesListFragment"
       android:label="NotesApp">
     <action
         android:id="@+id/action_contactListFragment_to_noteFragment"

@@ -1,6 +1,6 @@
 package com.antropov.talk.data
 
-data class Item(
+data class Note(
   val id: Int,
   var title: String,
   var description: String,
