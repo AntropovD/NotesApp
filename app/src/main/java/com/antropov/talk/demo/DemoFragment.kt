@@ -18,18 +18,18 @@ class DemoFragment : DaggerFragment() {
 
     private val viewModel by viewModels<DemoViewModel> { viewModelFactory }
 
-    private lateinit var viewDataBinding: DemoFragmentBinding
+    private lateinit var binding: DemoFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.demo_fragment, container, false)
-        viewDataBinding = DemoFragmentBinding.bind(root).apply {
+        binding = DemoFragmentBinding.bind(root).apply {
             viewModel = this@DemoFragment.viewModel
         }
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
-        return viewDataBinding.root
+        binding.lifecycleOwner = this.viewLifecycleOwner
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

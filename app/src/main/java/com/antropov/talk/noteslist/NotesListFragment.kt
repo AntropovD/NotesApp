@@ -1,25 +1,22 @@
 package com.antropov.talk.noteslist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import android.view.*
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.antropov.talk.R
 import com.antropov.talk.databinding.NoteListFragmentBinding
 import com.antropov.talk.util.EventObserver
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class NotesListFragment : Fragment() {
+class NotesListFragment : DaggerFragment() {
 
-  private val viewModel: NotesListViewModel by lazy {
-    ViewModelProviders.of(this)
-            .get(NotesListViewModel::class.java)
-  }
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  private val viewModel by viewModels<NotesListViewModel> { viewModelFactory }
 
   private lateinit var binding: NoteListFragmentBinding
 
@@ -34,6 +31,7 @@ class NotesListFragment : Fragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
+
     binding.lifecycleOwner = this
     binding.recyclerViewContactListFragment.adapter = NotesAdapter()
     setHasOptionsMenu(true)
