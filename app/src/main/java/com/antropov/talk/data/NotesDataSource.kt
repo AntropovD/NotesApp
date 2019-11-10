@@ -1,6 +1,6 @@
 package com.antropov.talk.data
 
-interface NotesRepository {
+interface NotesDataSource {
 
   suspend fun getNotes(): List<Note>
 

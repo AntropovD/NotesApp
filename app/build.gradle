@@ -5,64 +5,63 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-    dataBinding {
-        enabled = true
-    }
+  compileSdkVersion 29
+  buildToolsVersion "29.0.2"
+  dataBinding {
+    enabled = true
+  }
 
-    defaultConfig {
-        applicationId "com.antropov.talk"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 3
-        versionName "0.2.1"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-    }
+  defaultConfig {
+    applicationId "com.antropov.talk"
+    minSdkVersion 19
+    targetSdkVersion 29
+    versionCode 3
+    versionName "0.2.1"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    vectorDrawables.useSupportLibrary = true
+  }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
-                    'proguard-rules.pro'
-        }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+              'proguard-rules.pro'
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    // work-runtime-ktx 2.1.0 and above now requires Java 8
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  // work-runtime-ktx 2.1.0 and above now requires Java 8
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.cardview:cardview:$cardViewVersion"
-    implementation "androidx.core:core-ktx:$ktxVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
-    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+  implementation "androidx.appcompat:appcompat:$appCompatVersion"
+  implementation "androidx.cardview:cardview:$cardViewVersion"
+  implementation "androidx.core:core-ktx:$ktxVersion"
+  implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+  implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
+  implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+  implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+  implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+  implementation "androidx.room:room-ktx:$roomVersion"
+  implementation "androidx.room:room-runtime:$roomVersion"
+  implementation "com.google.dagger:dagger:$daggerVersion"
+  implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+  kapt "androidx.room:room-compiler:$roomVersion"
+  kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+  kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
+  // Dependencies for local unit tests
+  testImplementation "junit:junit:$junitVersion"
 
-    // Dependencies for local unit tests
-    testImplementation "junit:junit:$junitVersion"
-
-    // Dependencies for Android unit tests
-    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+  // Dependencies for Android unit tests
+  androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+  androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }

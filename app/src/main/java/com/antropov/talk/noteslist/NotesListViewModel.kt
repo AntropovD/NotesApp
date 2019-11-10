@@ -3,9 +3,11 @@ package com.antropov.talk.noteslist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.antropov.talk.data.Note
 import com.antropov.talk.data.NotesRepository
 import com.antropov.talk.util.Event
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NotesListViewModel @Inject constructor(
@@ -21,11 +23,16 @@ class NotesListViewModel @Inject constructor(
     get() = _openNoteEvent
 
   init {
-    _items.value = repository.getNotes()
+    _items.value = listOf()
+    viewModelScope.launch {
+      _items.value = repository.getNotes()
+    }
   }
 
   fun clearView() {
-    repository.clear()
+    viewModelScope.launch {
+      repository.clearNotes()
+    }
     _items.value = listOf()
   }
 }

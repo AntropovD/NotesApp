@@ -11,15 +11,15 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class NoteModule {
 
-    @ContributesAndroidInjector(
-        modules = [
-            ViewModelBuilder::class
-        ]
-    )
-    internal abstract fun noteFragment(): NoteFragment
+  @ContributesAndroidInjector(
+      modules = [
+        ViewModelBuilder::class
+      ]
+  )
+  internal abstract fun noteFragment(): NoteFragment
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(NoteViewModel::class)
-    abstract fun bindViewModel(viewmodel: NoteViewModel): ViewModel
+  @Binds
+  @IntoMap
+  @ViewModelKey(NoteViewModel::class)
+  abstract fun bindViewModel(viewmodel: NoteViewModel): ViewModel
 }

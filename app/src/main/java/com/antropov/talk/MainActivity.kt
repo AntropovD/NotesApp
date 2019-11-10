@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setSupportActionBar(findViewById(R.id.toolbar))
+    setupActionBar()
+  }
 
+  private fun setupActionBar() {
     val navController: NavController = findNavController(R.id.nav_host_fragment)
-    appBarConfiguration =
-      AppBarConfiguration.Builder(R.id.contactListFragment, R.id.noteFragment)
-        .build()
+    appBarConfiguration = AppBarConfiguration
+        .Builder(R.id.noteListFragment, R.id.noteFragment).build()
     setupActionBarWithNavController(navController, appBarConfiguration)
   }
 
