@@ -13,16 +13,16 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        ApplicationModule::class,
-        AndroidSupportInjectionModule::class,
-        NoteModule::class,
-        NotesListModule::class
+      ApplicationModule::class,
+      AndroidSupportInjectionModule::class,
+      NoteModule::class,
+      NotesListModule::class
     ]
 )
 interface ApplicationComponent : AndroidInjector<NotesApplication> {
 
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance applicationContext: Context): ApplicationComponent
-    }
+  @Component.Factory
+  interface Factory {
+    fun create(@BindsInstance applicationContext: Context): ApplicationComponent
+  }
 }

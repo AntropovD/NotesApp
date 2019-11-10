@@ -6,12 +6,12 @@
     android:layout_height="wrap_content"
     tools:showIn="@layout/activity_main">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/Talk.Toolbar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/Talk.Toolbar.Title" />
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:theme="@style/Talk.Toolbar"
+      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+      app:titleTextAppearance="@style/Talk.Toolbar.Title" />
 
 </com.google.android.material.appbar.AppBarLayout>

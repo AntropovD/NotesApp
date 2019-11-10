@@ -1,51 +1,31 @@
 package com.antropov.talk.data
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
-class DefaultNotesRepository @Inject constructor() : NotesRepository {
+class DefaultNotesRepository @Inject constructor(
+  private val notesDataSource: NotesDataSource,
+  private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) : NotesRepository {
 
-  var index = 0
-  val _notes: MutableList<Note> = ArrayList()
-
-  override fun getNotes(): List<Note> {
-    return _notes
+  override suspend fun getNotes(): List<Note> {
+    return notesDataSource.getNotes()
   }
 
-  override fun getNote(id: Int): Note? {
-    return _notes.find {
-      it.id == id
-    }
+  override suspend fun getNote(noteId: Int): Note? {
+    return notesDataSource.getNote(noteId)
   }
 
-  override fun increment(title: String, description: String, dateTime: String) {
-    index += 1
-    _notes.add(Note(index, title, description, dateTime))
+  override suspend fun addNote(note: Note) {
+    notesDataSource.addNote(note)
   }
 
-  override fun clear() {
-    index = 0
-    _notes.clear()
+  override suspend fun updateNote(note: Note) {
+    notesDataSource.updateNote(note)
   }
 
-  override fun updateItem(noteId: Int, title: String, description: String, dateTime: String) {
-    val item = _notes.find { it.id == noteId }
-    item?.let {
-      item.title = title
-      item.description = description
-      item.datetime = dateTime
-    }
-  }
-
-  companion object {
-
-    @Volatile
-    private var INSTANCE: DefaultNotesRepository? = null
-
-    fun getInstance(): DefaultNotesRepository {
-      if (INSTANCE == null) {
-        INSTANCE = DefaultNotesRepository()
-      }
-      return INSTANCE as DefaultNotesRepository
-    }
+  override suspend fun clearNotes() {
+    notesDataSource.clearNotes()
   }
 }
