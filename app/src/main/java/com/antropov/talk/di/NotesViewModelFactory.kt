@@ -18,9 +18,7 @@ class NotesViewModelFactory @Inject constructor(
         }
       }
     }
-    if (creator == null) {
-      throw IllegalArgumentException("Unknown model class: $modelClass")
-    }
+    requireNotNull(creator) { "Unknown model class: $modelClass" }
     try {
       @Suppress("UNCHECKED_CAST")
       return creator.get() as T
