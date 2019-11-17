@@ -12,7 +12,7 @@ android {
   }
 
   defaultConfig {
-    applicationId "com.antropov.talk"
+    applicationId "com.antropov.notesapp"
     minSdkVersion 19
     targetSdkVersion 29
     multiDexEnabled true
@@ -57,6 +57,8 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
   implementation "com.google.gms:google-services:$googleServicesVersion"
   implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
+  implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+
 
   kapt "androidx.room:room-compiler:$roomVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
