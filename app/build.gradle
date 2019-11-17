@@ -15,6 +15,7 @@ android {
     applicationId "com.antropov.talk"
     minSdkVersion 19
     targetSdkVersion 29
+    multiDexEnabled true
     versionCode 4
     versionName "0.2.2"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -46,6 +47,7 @@ dependencies {
   implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
   implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+  implementation "androidx.multidex:multidex:$multidexVersion"
   implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
   implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
   implementation "androidx.room:room-ktx:$roomVersion"
@@ -53,6 +55,8 @@ dependencies {
   implementation "com.google.dagger:dagger:$daggerVersion"
   implementation "com.google.dagger:dagger-android-support:$daggerVersion"
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+  implementation "com.google.gms:google-services:$googleServicesVersion"
+  implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
 
   kapt "androidx.room:room-compiler:$roomVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -65,3 +69,5 @@ dependencies {
   androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
   androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
+
+apply plugin: 'com.google.gms.google-services'

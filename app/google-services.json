@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "642769745347",
+    "firebase_url": "https://notesapp-9a3bc.firebaseio.com",
+    "project_id": "notesapp-9a3bc",
+    "storage_bucket": "notesapp-9a3bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642769745347:android:cb4648031d54c644b87976",
+        "android_client_info": {
+          "package_name": "com.antropov.talk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642769745347-p1frn0p0s2v8nd2k4h5iduth9iqsgffn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.antropov.talk",
+            "certificate_hash": "8da1f029c48fb92a4b88791bd7fc3609c60e4592"
+          }
+        },
+        {
+          "client_id": "642769745347-44cuqit2lc387bma3h3r7af72p1ncd2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA85DH6I42F8P_IiXOfXzHMLliUGpaBGxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642769745347-44cuqit2lc387bma3h3r7af72p1ncd2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
