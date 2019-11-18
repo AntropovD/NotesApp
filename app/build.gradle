@@ -52,14 +52,18 @@ dependencies {
   implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
   implementation "androidx.room:room-ktx:$roomVersion"
   implementation "androidx.room:room-runtime:$roomVersion"
+
   implementation "com.google.dagger:dagger:$daggerVersion"
   implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
   implementation "com.google.gms:google-services:$googleServicesVersion"
   implementation "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
-  implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+  implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+  implementation "com.firebaseui:firebase-ui-auth:$firebaseUiAuthVersion"
 
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
+  implementation 'androidx.appcompat:appcompat:1.1.0'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
   kapt "androidx.room:room-compiler:$roomVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
   kapt "com.google.dagger:dagger-android-processor:$daggerVersion"

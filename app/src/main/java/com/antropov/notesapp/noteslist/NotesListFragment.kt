@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.antropov.notesapp.R
 import com.antropov.notesapp.databinding.NoteListFragmentBinding
 import com.antropov.notesapp.util.EventObserver
+import com.google.firebase.auth.FirebaseAuth
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -79,6 +80,10 @@ class NotesListFragment : DaggerFragment() {
           viewModel.clearView()
           true
         }
+        R.id.logout_menu -> {
+          logout()
+          true
+        }
         else -> {
           super.onOptionsItemSelected(item)
         }
@@ -94,5 +99,9 @@ class NotesListFragment : DaggerFragment() {
     val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment()
     NavHostFragment.findNavController(this)
         .navigate(action)
+  }
+
+  private fun logout() {
+    FirebaseAuth.getInstance().signOut()
   }
 }

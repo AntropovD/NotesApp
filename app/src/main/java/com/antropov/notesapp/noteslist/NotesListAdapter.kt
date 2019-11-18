@@ -1,4 +1,4 @@
-package com.antropov.notesapp
+package com.antropov.notesapp.noteslist
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
