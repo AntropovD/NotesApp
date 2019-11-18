@@ -38,7 +38,7 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.ViewHolder>(NoteDiffCallback
 
     private fun navigateToNote(noteId: Int, view: View) {
       val direction = NotesListFragmentDirections
-          .actionContactListFragmentToNoteFragment(noteId)
+          .actionNotesListFragmentToNoteFragment(noteId)
       view.findNavController()
           .navigate(direction)
     }

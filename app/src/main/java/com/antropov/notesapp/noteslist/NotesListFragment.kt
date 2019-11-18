@@ -90,13 +90,13 @@ class NotesListFragment : DaggerFragment() {
       }
 
   private fun navigateToEditNote(noteId: Int) {
-    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment(noteId)
+    val action = NotesListFragmentDirections.actionNotesListFragmentToNoteFragment(noteId)
     NavHostFragment.findNavController(this)
         .navigate(action)
   }
 
   private fun navigateToNewNote() {
-    val action = NotesListFragmentDirections.actionContactListFragmentToNoteFragment()
+    val action = NotesListFragmentDirections.actionNotesListFragmentToNoteFragment()
     NavHostFragment.findNavController(this)
         .navigate(action)
   }

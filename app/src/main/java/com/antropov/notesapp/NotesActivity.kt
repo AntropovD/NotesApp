@@ -9,16 +9,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.antropov.notesapp.R
+import com.antropov.notesapp.util.RC_SIGN_IN
+import com.antropov.notesapp.util.USERNAME
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 
 class NotesActivity : AppCompatActivity() {
 
   private lateinit var appBarConfiguration: AppBarConfiguration
-
-  private val USERNAME: String = "username"
-  private val RC_SIGN_IN = 1001
 
   private lateinit var firebaseAuth: FirebaseAuth
   private lateinit var authStateListener: FirebaseAuth.AuthStateListener
@@ -90,11 +88,12 @@ class NotesActivity : AppCompatActivity() {
       }
     }
   }
+
   private fun setupActionBar() {
     val navController: NavController = findNavController(
         R.id.nav_host_fragment)
     appBarConfiguration = AppBarConfiguration
-        .Builder(R.id.noteListFragment,
+        .Builder(R.id.notesListFragment,
             R.id.noteFragment).build()
     setupActionBarWithNavController(navController, appBarConfiguration)
   }

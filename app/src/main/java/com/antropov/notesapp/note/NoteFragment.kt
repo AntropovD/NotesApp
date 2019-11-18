@@ -72,7 +72,7 @@ class NoteFragment : DaggerFragment() {
   }
 
   private fun navigateBack() {
-    val action = NoteFragmentDirections.actionNoteFragmentToContactListFragment()
+    val action = NoteFragmentDirections.actionNoteFragmentToNotesListFragment()
     NavHostFragment.findNavController(this)
         .navigate(action)
   }

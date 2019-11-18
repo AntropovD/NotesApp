@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="indigo_500">#3f51b5</color>
-  <color name="indigo_300">#7986cb</color>
   <color name="indigo_700">#0a00b6</color>
   <color name="pink_a200">#ff4081</color>
 </resources>
