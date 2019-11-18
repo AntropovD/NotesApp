@@ -6,7 +6,7 @@
 
     <variable
         name="viewModel"
-        type="com.antropov.talk.note.NoteViewModel" />
+        type="com.antropov.notesapp.note.NoteViewModel" />
   </data>
 
   <androidx.coordinatorlayout.widget.CoordinatorLayout
