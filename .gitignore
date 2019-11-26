@@ -138,3 +138,6 @@ fabric.properties
 app/google-services.json
 
 keystore.properties
+
+app/debug/
+app/release/
