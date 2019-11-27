@@ -1,7 +1,7 @@
 package com.antropov.notesapp.data.source.local
 
-import com.antropov.notesapp.data.Note
-import com.antropov.notesapp.data.NotesDataSource
+import com.antropov.notesapp.data.entity.Note
+import com.antropov.notesapp.data.source.NotesDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

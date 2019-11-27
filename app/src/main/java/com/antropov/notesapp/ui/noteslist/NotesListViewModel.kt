@@ -1,11 +1,11 @@
-package com.antropov.notesapp.noteslist
+package com.antropov.notesapp.ui.noteslist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.antropov.notesapp.data.Note
-import com.antropov.notesapp.data.NotesRepository
+import com.antropov.notesapp.data.entity.Note
+import com.antropov.notesapp.data.repository.NotesRepository
 import com.antropov.notesapp.util.Event
 import kotlinx.coroutines.launch
 import javax.inject.Inject

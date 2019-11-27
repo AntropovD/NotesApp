@@ -1,4 +1,4 @@
-package com.antropov.notesapp
+package com.antropov.notesapp.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -9,16 +9,20 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.antropov.notesapp.R
 import com.antropov.notesapp.util.RC_SIGN_IN
 import com.antropov.notesapp.util.USERNAME
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class NotesActivity : AppCompatActivity() {
+class NotesActivity: DaggerAppCompatActivity() {
+
+  @Inject
+  lateinit var firebaseAuth: FirebaseAuth
 
   private lateinit var appBarConfiguration: AppBarConfiguration
-
-  private lateinit var firebaseAuth: FirebaseAuth
   private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +30,6 @@ class NotesActivity : AppCompatActivity() {
     setContentView(R.layout.activity_notes)
     setSupportActionBar(findViewById(R.id.toolbar))
     setupActionBar()
-    firebaseAuth = FirebaseAuth.getInstance()
     authStateListener = authStateListener()
   }
 
@@ -37,15 +40,7 @@ class NotesActivity : AppCompatActivity() {
 
   override fun onPause() {
     super.onPause()
-    if (authStateListener != null) {
-      firebaseAuth.removeAuthStateListener(authStateListener)
-    }
-  }
-
-  private fun onSignedOutCleanup() {
-  }
-
-  private fun onSignedInInitialize(displayName: String?) {
+    firebaseAuth.removeAuthStateListener(authStateListener)
   }
 
   private fun createSignInIntent() {
@@ -65,12 +60,8 @@ class NotesActivity : AppCompatActivity() {
   private fun authStateListener(): FirebaseAuth.AuthStateListener {
     return FirebaseAuth.AuthStateListener {
       val user = it.currentUser
-      if (user != null) {
-        onSignedInInitialize(user.displayName)
-      } else {
-        onSignedOutCleanup()
+      if (user == null)
         createSignInIntent()
-      }
     }
   }
 

@@ -5,7 +5,7 @@
     app:startDestination="@id/notesListFragment">
   <fragment
       android:id="@+id/notesListFragment"
-      android:name="com.antropov.notesapp.noteslist.NotesListFragment"
+      android:name="com.antropov.notesapp.ui.noteslist.NotesListFragment"
       android:label="NotesApp">
     <action
         android:id="@+id/action_notesListFragment_to_noteFragment"
@@ -18,7 +18,7 @@
   </fragment>
   <fragment
       android:id="@+id/noteFragment"
-      android:name="com.antropov.notesapp.note.NoteFragment"
+      android:name="com.antropov.notesapp.ui.note.NoteFragment"
       android:label="Note">
     <action
         android:id="@+id/action_noteFragment_to_notesListFragment"

@@ -1,12 +1,11 @@
-package com.antropov.notesapp.data
+package com.antropov.notesapp.data.repository
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import com.antropov.notesapp.data.source.NotesDataSource
+import com.antropov.notesapp.data.entity.Note
 import javax.inject.Inject
 
 class DefaultNotesRepository @Inject constructor(
-  private val notesDataSource: NotesDataSource,
-  private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+  private val notesDataSource: NotesDataSource
 ) : NotesRepository {
 
   override suspend fun getNotes(): List<Note> {

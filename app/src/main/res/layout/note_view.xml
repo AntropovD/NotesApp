@@ -11,7 +11,7 @@
 
     <variable
         name="note"
-        type="com.antropov.notesapp.data.Note" />
+        type="com.antropov.notesapp.data.entity.Note" />
   </data>
 
   <androidx.cardview.widget.CardView

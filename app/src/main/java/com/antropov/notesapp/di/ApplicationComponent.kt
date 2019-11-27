@@ -2,8 +2,9 @@ package com.antropov.notesapp.di
 
 import android.content.Context
 import com.antropov.notesapp.NotesApplication
-import com.antropov.notesapp.note.NoteModule
-import com.antropov.notesapp.noteslist.NotesListModule
+import com.antropov.notesapp.ui.NotesActivityModule
+import com.antropov.notesapp.ui.note.NoteModule
+import com.antropov.notesapp.ui.noteslist.NotesListModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,6 +16,7 @@ import javax.inject.Singleton
     modules = [
       ApplicationModule::class,
       AndroidSupportInjectionModule::class,
+      NotesActivityModule::class,
       NoteModule::class,
       NotesListModule::class
     ]
