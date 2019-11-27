@@ -1,4 +1,4 @@
-package com.antropov.notesapp.note
+package com.antropov.notesapp.ui.note
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -72,7 +72,8 @@ class NoteFragment : DaggerFragment() {
   }
 
   private fun navigateBack() {
-    val action = NoteFragmentDirections.actionNoteFragmentToNotesListFragment()
+    val action =
+        NoteFragmentDirections.actionNoteFragmentToNotesListFragment()
     NavHostFragment.findNavController(this)
         .navigate(action)
   }

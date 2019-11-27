@@ -1,4 +1,4 @@
-package com.antropov.notesapp.di
+package com.antropov.notesapp.di.viewmodelfactory
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

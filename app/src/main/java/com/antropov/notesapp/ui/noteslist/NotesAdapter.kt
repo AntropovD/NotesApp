@@ -1,4 +1,4 @@
-package com.antropov.notesapp.noteslist
+package com.antropov.notesapp.ui.noteslist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.antropov.notesapp.data.Note
+import com.antropov.notesapp.data.entity.Note
 import com.antropov.notesapp.databinding.NoteViewBinding
 
 class NotesAdapter : ListAdapter<Note, NotesAdapter.ViewHolder>(NoteDiffCallback()) {

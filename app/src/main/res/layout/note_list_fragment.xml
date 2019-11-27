@@ -7,7 +7,7 @@
 
     <variable
         name="viewModel"
-        type="com.antropov.notesapp.noteslist.NotesListViewModel" />
+        type="com.antropov.notesapp.ui.noteslist.NotesListViewModel" />
   </data>
 
   <androidx.coordinatorlayout.widget.CoordinatorLayout

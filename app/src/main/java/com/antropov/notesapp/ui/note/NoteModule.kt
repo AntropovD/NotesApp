@@ -1,8 +1,8 @@
-package com.antropov.notesapp.note
+package com.antropov.notesapp.ui.note
 
 import androidx.lifecycle.ViewModel
-import com.antropov.notesapp.di.ViewModelBuilder
-import com.antropov.notesapp.di.ViewModelKey
+import com.antropov.notesapp.di.viewmodelfactory.ViewModelBuilder
+import com.antropov.notesapp.di.viewmodelfactory.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
