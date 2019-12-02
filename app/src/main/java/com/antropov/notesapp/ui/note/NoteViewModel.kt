@@ -1,19 +1,19 @@
-package com.antropov.notesapp.note
+package com.antropov.notesapp.ui.note
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.antropov.notesapp.data.Note
-import com.antropov.notesapp.data.NotesRepository
+import com.antropov.notesapp.data.entity.Note
+import com.antropov.notesapp.data.repository.NotesRepository
+import com.antropov.notesapp.util.DateTimeProvider
 import com.antropov.notesapp.util.Event
 import kotlinx.coroutines.launch
-import java.text.DateFormat
-import java.util.Calendar
 import javax.inject.Inject
 
 class NoteViewModel @Inject constructor(
-  private val notesRepository: NotesRepository
+  private val notesRepository: NotesRepository,
+  private val dateTimeProvider: DateTimeProvider
 ) : ViewModel() {
 
   val title = MutableLiveData<String>()
@@ -31,10 +31,6 @@ class NoteViewModel @Inject constructor(
   private var isNewNote = false
   private var noteId = -1
 
-  init {
-    dateTime.value = getDateTime()
-  }
-
   fun addNote(
     title: String,
     description: String
@@ -45,21 +41,23 @@ class NoteViewModel @Inject constructor(
     }
     _noteAddedEvent.value = Event(Unit)
     if (isNewNote) {
-      createNote(title, description, dateTime.value)
+      createNote(title, description, dateTimeProvider.getDateTime())
     } else {
-      updateNote(title, description, dateTime.value, noteId)
+      updateNote(title, description, dateTimeProvider.getDateTime(), noteId)
     }
   }
 
   private fun createNote(title: String, description: String, dateTime: String?) {
-    val note = Note(title, description, dateTime!!)
+    val note =
+        Note(title, description, dateTime!!)
     viewModelScope.launch {
       notesRepository.addNote(note)
     }
   }
 
   private fun updateNote(title: String, description: String, dateTime: String?, noteId: Int) {
-    val note = Note(title, description, dateTime ?: "n/a", noteId)
+    val note = Note(title, description,
+        dateTime ?: "n/a", noteId)
     viewModelScope.launch {
       notesRepository.updateNote(note)
     }
@@ -81,9 +79,4 @@ class NoteViewModel @Inject constructor(
       }
     }
   }
-
-  private fun getDateTime(): String = DateFormat.getDateTimeInstance(
-      DateFormat.SHORT,
-      DateFormat.SHORT
-  ).format(Calendar.getInstance().time)
 }

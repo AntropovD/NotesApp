@@ -1,4 +1,4 @@
-package com.antropov.notesapp.data
+package com.antropov.notesapp.data.entity
 
 import androidx.room.Entity
 import androidx.room.Index

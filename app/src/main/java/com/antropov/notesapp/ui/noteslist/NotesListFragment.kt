@@ -1,4 +1,4 @@
-package com.antropov.notesapp.noteslist
+package com.antropov.notesapp.ui.noteslist
 
 import android.os.Bundle
 import android.util.Log

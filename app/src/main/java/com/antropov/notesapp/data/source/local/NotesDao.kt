@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.antropov.notesapp.data.Note
+import com.antropov.notesapp.data.entity.Note
 
 @Dao
 interface NotesDao {

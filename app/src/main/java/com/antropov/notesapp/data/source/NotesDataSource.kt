@@ -1,6 +1,8 @@
-package com.antropov.notesapp.data
+package com.antropov.notesapp.data.source
 
-interface NotesRepository {
+import com.antropov.notesapp.data.entity.Note
+
+interface NotesDataSource {
 
   suspend fun getNotes(): List<Note>
 
